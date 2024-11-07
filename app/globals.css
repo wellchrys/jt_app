@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-weight: 500;
+
+  scroll-padding: 0;
+  scroll-behavior: smooth;
+}
+
+::placeholder {
+  color: #333;
+  letter-spacing: -0.25px !important;
+}
+
+h1,
+h2 {
+  color: hsla(222, 79%, 19%, 1);
+  letter-spacing: -0.35px !important;
+}
+
+strong {
+  color: hsla(222, 79%, 19%, 1);
+  letter-spacing: -0.35px !important;
+}
+
+input {
+  color: hsla(222, 79%, 19%, 1);
+  letter-spacing: -0.25px !important;
+}
+
+p,
+label,
+span,
+h3,
+h4,
+h5,
+h6 {
+  color: hsla(222, 79%, 19%, 1);
+  line-height: normal;
+  letter-spacing: -0.25px !important;
+}
+
+::-webkit-scrollbar {
+  width: 5.5px;
+  height: 5.5px;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 2.5px;
+    height: 2.5px;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbcbcb;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cacaca;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+
+@layer base {
+  :root {
+    --background: 0, 0%, 97%, 1;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 0, 0%, 100%, 1;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 222, 15%, 83%, 1;
+    --secondary-foreground: 224, 15%, 67%, 1;
+    --tertiary: 40, 100%, 53%, 1;
+    --tertiary-foreground: 40 100% 53% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 224, 89%, 60%, 1;
+    --accent-foreground: 223, 100%, 48%, 1;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240, 5.9%, 90%;
+    --input: 240 5.9% 90%;
+    --ring: 222, 15%, 83%, 1;
+    --radius: 0.5rem;
+    --none: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
