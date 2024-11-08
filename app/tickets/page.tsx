@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
-import { useRouter } from "next/navigation";
 
 import {
   Dashboard,
@@ -17,9 +16,10 @@ import Pagination from "@/app/dashboard/components/table/Pagination";
 
 import { Ticket } from "./models/ticket";
 import { TICKETS_QUERY, TicketList } from "./graphql/ticketsQuery";
-// import { INITIAL_QUERY_STATE_CONFIG } from "@/graphql/apollo/config";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
+import { useRouter } from "next/navigation";
+import { useTicket } from "@/lib/ticket-provider";
 
 type ListState = {
   tickets: Ticket[];
@@ -33,6 +33,7 @@ export type FormSeachField = {
 
 export default function Page() {
   const { push } = useRouter();
+  const { ticketId } = useTicket();
 
   const [listState, setListState] = useState<ListState>({
     tickets: [
@@ -123,7 +124,7 @@ export default function Page() {
 
   useEffect(() => {
     if (error) {
-      // addToast(LIST_ERROR_TOAST);
+      // addToast();
     }
   }, [error]);
 
@@ -148,19 +149,19 @@ export default function Page() {
     // closeLoading();
   }, [data, loading]);
 
-  const onClickEditButton = (id: number) => push(`/tickets/${id}`);
+  const onClickEditButton = (id: number, ticketName: string) => {
+    ticketId(id);
+
+    push(`/tickets/${ticketName.replace(/\s+/g, "-").toLowerCase()}`);
+  };
 
   const onSubmit: SubmitHandler<FormSeachField> = (input: {
     [key: string]: any;
   }) => {
-    const res = Object.fromEntries(
-      Object.entries(input).filter(([, value]) => !!value)
-    );
-
-    const isNotEmptyFilter = Object.keys(res).length > 0 ? res : false
-
-    isNotEmptyFilter && refetch({
-      filters: res
+    refetch({
+      filters: Object.fromEntries(
+        Object.entries(input).filter(([, value]) => !!value)
+      ),
     });
   };
 

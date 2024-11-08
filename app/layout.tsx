@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 import { METADATA } from "@/utils/metadata";
 
 import { ApolloProvider } from "@/lib/apollo-provider";
+import { TicketProvider } from "@/lib/ticket-provider";
 
 const circular = localFont({
   src: [
@@ -35,7 +36,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={circular.className}>
-        <ApolloProvider>{children}</ApolloProvider>
+        <ApolloProvider>
+          <TicketProvider>{children}</TicketProvider>
+        </ApolloProvider>
       </body>
     </html>
   );

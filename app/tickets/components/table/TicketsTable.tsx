@@ -4,7 +4,7 @@ import { Table, TableBody } from "@/components/ui/table";
 
 type Props = {
   tickets: Ticket[];
-  onClickEditButton: (id: number) => void;
+  onClickEditButton: (id: number, ticketName: string) => void;
 };
 
 export default function TicketsTable({ tickets, onClickEditButton }: Props) {

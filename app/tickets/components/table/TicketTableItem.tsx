@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator";
 
 type Props = {
   ticket: Ticket;
-  onClickEditButton: (id: number) => void;
+  onClickEditButton: (id: number, ticketName: string) => void;
 };
 
 export default function TicketTableItem({
@@ -29,7 +29,7 @@ export default function TicketTableItem({
     e.stopPropagation();
     e.preventDefault();
 
-    onClickEditButton(id);
+    onClickEditButton(id, ticketName);
   };
 
   return (
@@ -46,7 +46,7 @@ export default function TicketTableItem({
             style={{
               objectFit: "cover",
               objectPosition: "center",
-              height: "100%"
+              height: "100%",
             }}
           />
         </div>
@@ -78,9 +78,10 @@ export default function TicketTableItem({
               <p className="relative mb-3 mt-1">
                 R${" "}
                 <span className="text-xl text-accent font-bold absolute top-[1px] left-[23px]">
-                  {ticketDiscountValue }
+                  {ticketDiscountValue}
                 </span>
               </p>
+
               <Button
                 className="bg-accent text-primary mt-4 hover:text-primary"
                 onClick={handleClickEditButton}

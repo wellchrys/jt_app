@@ -20,6 +20,8 @@ export const TICKET_QUERY = gql`
       ticketDiscountValue
       ticketLocation
       ticketGrade
+      ticketReviews
+      ticketImg
     }
   }
 `;
