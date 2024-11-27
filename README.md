@@ -1,11 +1,3 @@
-# DIFICULDADES
-
-Foi meu primeiro contato com Next.js, por isso tive alguns problemas com a configuração do Apollo Provider, que funciona difente do que uma aplicação React. 
-
-Deixei alguns pontos para trás, como: Endpoint do Carinho, testes unitário(front-end), component checkout e layout da paginação. 
-
-Esses pontos não foram implementados por falta de tempo!
-
 # Getting Started
 
 First, run the development server:
